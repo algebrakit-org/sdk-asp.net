@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgebrakitSDK", "AlgebrakitSDK\AlgebrakitSDK.csproj", "{0B0D3BD9-4C03-4B2C-EEE9-1ACA86233243}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp\DemoApp.csproj", "{D1A5E8C3-5F3B-4A6E-9F3C-2B1A5E8C3F3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B0D3BD9-4C03-4B2C-EEE9-1ACA86233243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0D3BD9-4C03-4B2C-EEE9-1ACA86233243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0D3BD9-4C03-4B2C-EEE9-1ACA86233243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0D3BD9-4C03-4B2C-EEE9-1ACA86233243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1A5E8C3-5F3B-4A6E-9F3C-2B1A5E8C3F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1A5E8C3-5F3B-4A6E-9F3C-2B1A5E8C3F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1A5E8C3-5F3B-4A6E-9F3C-2B1A5E8C3F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1A5E8C3-5F3B-4A6E-9F3C-2B1A5E8C3F3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {306C42D7-31E9-4E25-8513-07532709F38E}
+	EndGlobalSection
+EndGlobal
