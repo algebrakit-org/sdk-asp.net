@@ -19,7 +19,7 @@ namespace DemoApp
 
             // Initialize the HttpClient and SessionService with API key
             using var httpClient = new HttpClient { BaseAddress = new Uri("https://api.algebrakit.com") };
-            var apiKey = "your-api-key"; // Replace with your actual API key
+            var apiKey = "YWxnZWJyYWtpdC5DTVMtTWFydGlqbi42YTQzMGM1ZjRiZTQxZGExMmVhNjc3NTU1OTNlY2IwMDg3YzczMTQ2Nzk5ZDdiNmIyNmE2NWJmNWFiZjY2NjgyYjkzY2ZmMTcxMzM5ODQ2NzQ3MWIyOWNiNjdlZWQxZjg="; // Replace with your actual API key
             var sessionService = new SessionService(httpClient, apiKey);
 
             try
