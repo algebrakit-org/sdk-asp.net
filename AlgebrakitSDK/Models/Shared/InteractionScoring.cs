@@ -54,10 +54,4 @@ public class Penalties
     /// </summary>
     [JsonPropertyName("mathErrors")]
     public int MathErrors { get; set; }
-
-    /// <summary>
-    /// Number of notation errors made.
-    /// </summary>
-    [JsonPropertyName("notationErrors")]
-    public int NotationErrors { get; set; }
 }
