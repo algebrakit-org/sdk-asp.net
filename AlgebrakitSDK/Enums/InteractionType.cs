@@ -12,5 +12,8 @@ public enum InteractionType
     STATISTICS,
     NUMBER_LINE,
     ARITHMETIC,
-    CHOICE
+    CHOICE,
+    OPEN_ANSWER,
+    MODEL_METHOD,
+    MODEL_METHOD_FREEFORM
 }

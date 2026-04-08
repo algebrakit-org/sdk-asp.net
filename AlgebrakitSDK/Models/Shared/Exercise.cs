@@ -41,6 +41,9 @@ public class ExerciseBySession : Exercise
 {
     [JsonPropertyName("sessionId")]
     public string SessionId { get; set; } = string.Empty;
+
+    [JsonPropertyName("nr")]
+    public int? Nr { get; set; }
 }
 
 /// <summary>

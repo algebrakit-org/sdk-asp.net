@@ -21,7 +21,7 @@ public class AK_Exercise
     public string? Script { get; set; }
 
     [JsonPropertyName("symbols")]
-    public List<AK_Symbol> Symbols { get; set; } = new();
+    public List<AK_Symbol>? Symbols { get; set; }
 
     [JsonPropertyName("elements")]
     public List<AK_Element> Elements { get; set; } = new();

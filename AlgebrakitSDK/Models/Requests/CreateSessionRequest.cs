@@ -1,3 +1,4 @@
+using AlgebrakitSDK.Models.AkExercise;
 using AlgebrakitSDK.Models.Shared;
 using System.Text.Json.Serialization;
 
@@ -37,4 +38,7 @@ public class CreateSessionRequest
     /// </summary>
     [JsonPropertyName("apiVersion")]
     public int ApiVersion { get; set; } = 2;
+
+    [JsonPropertyName("studentFeedbackType")]
+    public AK_StudentFeedbackType? StudentFeedbackType { get; set; }
 }

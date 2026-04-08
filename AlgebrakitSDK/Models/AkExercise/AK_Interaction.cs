@@ -46,7 +46,7 @@ public class AK_InteractionFITB : AK_Interaction
     public string Content { get; set; } = string.Empty;
 
     [JsonPropertyName("blanks")]
-    public Dictionary<string, AK_Blank> Blanks { get; set; } = new();
+    public List<AK_Blank> Blanks { get; set; } = new();
 
     [JsonPropertyName("interchangables")]
     public List<List<string>>? Interchangables { get; set; }
@@ -65,6 +65,12 @@ public class AK_InteractionMultistep : AK_Interaction
 
     [JsonPropertyName("solutionPart")]
     public AK_MultistepPart SolutionPart { get; set; } = new();
+
+    [JsonPropertyName("initialExpressionType")]
+    public AK_InitialExpressionType? InitialExpressionType { get; set; }
+
+    [JsonPropertyName("initialExpression")]
+    public string? InitialExpression { get; set; }
 }
 
 /// <summary>

@@ -83,3 +83,44 @@ public enum AK_AccuracyType
     ACCURATE,
     PRECISION
 }
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum AK_NumberForm
+{
+    DECIMAL_REQUIRED,
+    DECIMAL_PREFERRED,
+    FRACTION_REQUIRED,
+    FRACTION_PREFERRED,
+    SCIENTIFIC_NOTATION_REQUIRED,
+    SCIENTIFIC_NOTATION_PREFERRED
+}
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum AK_RadicalForm
+{
+    STANDARD_FORM_REQUIRED
+}
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum AK_FractionForm
+{
+    MIXED_FRACTION_REQUIRED,
+    IMPROPER_FRACTION_REQUIRED
+}
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum AK_InitialExpressionType
+{
+    NONE,
+    CUSTOM,
+    AUTOMATIC
+}
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum AK_StudentFeedbackType
+{
+    ALL,
+    ICONS_ONLY,
+    ERRORS_ONLY,
+    NONE
+}

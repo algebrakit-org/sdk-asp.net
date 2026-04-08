@@ -14,6 +14,10 @@ public class SessionService
 {
     private readonly HttpClient _httpClient;
     private readonly string _apiKey;
+    private readonly JsonSerializerOptions _jsonOptions = new()
+    {
+        DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    };
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SessionService"/> class.
@@ -36,7 +40,7 @@ public class SessionService
     /// <returns>The response containing an array of created session details.</returns>
     public async Task<CreateSessionResponse> CreateSessionAsync(CreateSessionRequest request)
     {
-        var jsonContent = JsonSerializer.Serialize(request);
+        var jsonContent = JsonSerializer.Serialize(request, _jsonOptions);
         var httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PostAsync("/session/create", httpContent);
@@ -58,7 +62,7 @@ public class SessionService
     /// <returns>The response containing session scores.</returns>
     public async Task<SessionScoreResponse> GetSessionScoreAsync(SessionScoreRequest request)
     {
-        var jsonContent = JsonSerializer.Serialize(request);
+        var jsonContent = JsonSerializer.Serialize(request, _jsonOptions);
         var httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PostAsync("/session/score", httpContent);
@@ -80,7 +84,7 @@ public class SessionService
     /// <returns>The response for the lock or unlock action.</returns>
     public async Task<SessionLockResponse> LockOrUnlockSessionAsync(SessionLockRequest request)
     {
-        var jsonContent = JsonSerializer.Serialize(request);
+        var jsonContent = JsonSerializer.Serialize(request, _jsonOptions);
         var httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PostAsync("/sessions/lock", httpContent);
@@ -102,7 +106,7 @@ public class SessionService
     /// <returns>The response containing session information.</returns>
     public async Task<SessionInfoResponse> GetSessionInfoAsync(SessionInfoRequest request)
     {
-        var jsonContent = JsonSerializer.Serialize(request);
+        var jsonContent = JsonSerializer.Serialize(request, _jsonOptions);
         var httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PostAsync("/session/info", httpContent);
@@ -124,7 +128,7 @@ public class SessionService
     /// <returns>The response containing session data for the requested IDs.</returns>
     public async Task<SessionRetrieveResponse> RetrieveSessionsAsync(SessionRetrieveRequest request)
     {
-        var jsonContent = JsonSerializer.Serialize(request);
+        var jsonContent = JsonSerializer.Serialize(request, _jsonOptions);
         var httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PostAsync("/session/retrieve", httpContent);
@@ -146,7 +150,7 @@ public class SessionService
     /// <returns>The response containing validation results.</returns>
     public async Task<ExerciseValidateResponse> ValidateExerciseAsync(ExerciseValidateRequest request)
     {
-        var jsonContent = JsonSerializer.Serialize(request);
+        var jsonContent = JsonSerializer.Serialize(request, _jsonOptions);
         var httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PostAsync("/exercise/validate", httpContent);
@@ -168,7 +172,7 @@ public class SessionService
     /// <returns>The response containing published info about the exercise.</returns>
     public async Task<ExerciseInfoResponse> GetExerciseInfoAsync(ExerciseInfoRequest request)
     {
-        var jsonContent = JsonSerializer.Serialize(request);
+        var jsonContent = JsonSerializer.Serialize(request, _jsonOptions);
         var httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PostAsync("/exercise/published-info", httpContent);

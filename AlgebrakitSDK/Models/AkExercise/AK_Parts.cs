@@ -3,6 +3,36 @@ using System.Text.Json.Serialization;
 namespace AlgebrakitSDK.Models.AkExercise;
 
 /// <summary>
+/// Specification for a physical unit attached to an expression.
+/// </summary>
+public class AK_UnitSpec
+{
+    [JsonPropertyName("unit")]
+    public string Unit { get; set; } = string.Empty;
+
+    [JsonPropertyName("allowEquivalentUnits")]
+    public bool? AllowEquivalentUnits { get; set; }
+
+    [JsonPropertyName("override")]
+    public bool? Override { get; set; }
+}
+
+/// <summary>
+/// Specification for the required form of an expression.
+/// </summary>
+public class AK_FormSpec
+{
+    [JsonPropertyName("numbers")]
+    public AK_NumberForm? Numbers { get; set; }
+
+    [JsonPropertyName("radicals")]
+    public AK_RadicalForm? Radicals { get; set; }
+
+    [JsonPropertyName("fractions")]
+    public AK_FractionForm? Fractions { get; set; }
+}
+
+/// <summary>
 /// An expression part defining a task, optional accuracy, and optional unit.
 /// </summary>
 public class AK_ExpressionPart
@@ -14,7 +44,10 @@ public class AK_ExpressionPart
     public AK_AccuracyPreSpec? Accuracy { get; set; }
 
     [JsonPropertyName("unit")]
-    public string? Unit { get; set; }
+    public AK_UnitSpec? Unit { get; set; }
+
+    [JsonPropertyName("form")]
+    public AK_FormSpec? Form { get; set; }
 }
 
 /// <summary>
@@ -61,6 +94,9 @@ public class AK_SelectionOption
 /// </summary>
 public class AK_Blank
 {
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = string.Empty;
+
     [JsonPropertyName("size")]
     public AK_FieldSize Size { get; set; }
 
@@ -112,4 +148,7 @@ public class AK_AccuracyPreSpec
 
     [JsonPropertyName("nr")]
     public int Nr { get; set; }
+
+    [JsonPropertyName("keepDecimalZeros")]
+    public bool? KeepDecimalZeros { get; set; }
 }
