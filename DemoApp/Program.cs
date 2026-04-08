@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using AlgebrakitSDK.Models.Shared;
+using AlgebrakitSDK.Models.AkExercise;
 
 namespace DemoApp
 {
@@ -19,7 +20,7 @@ namespace DemoApp
 
             // Initialize the HttpClient and SessionService with API key
             using var httpClient = new HttpClient { BaseAddress = new Uri("https://api.algebrakit.com") };
-            var apiKey = "your-api-key"; // Replace with your actual API key
+            var apiKey = "YWxnZWJyYWtpdC4yMDI1LU1hcnRpam4uNWIxNWU0OWZiMzA1YTI3OWZmNzY4OTc4OTMxZTZlYzg3OGI5Yjg0MDhhODc3OGU2OGUyOTZhYTQ5MDQyNWFhM2M1ZDk2Yjk4ZTk2NzI4ZjA1NGYwNjczMDRjMjMxMzZi"; // Replace with your actual API key
             var sessionService = new SessionService(httpClient, apiKey);
 
             try
@@ -103,6 +104,63 @@ namespace DemoApp
                 else
                 {
                     Console.WriteLine("No sessions were created.");
+                }
+
+                // Create a session using an AK_Exercise specification
+                Console.WriteLine("\nCreating session from AK_Exercise spec...");
+                var exerciseSpec = new AK_Exercise
+                {
+                    Type = "AK_Exercise",
+                    Version = 1,
+                    StudentProfile = "uk_KS5",
+                    QuestionMode = AK_QuestionMode.ALL_AT_ONCE,
+                    Symbols = new List<AK_Symbol>
+                    {
+                        new AK_Symbol { Name = "x", Type = AK_SymbolType.VARIABLE }
+                    },
+                    Elements = new List<AK_Element>
+                    {
+                        new AK_Element
+                        {
+                            Blocks = new List<AK_ElementBlock>
+                            {
+                                new AK_ContentBlock { Content = "Simplify the following expression." },
+                                new AK_InteractionBlock
+                                {
+                                    Interaction = new AK_InteractionMultistep
+                                    {
+                                        SolutionPart = new AK_MultistepPart
+                                        {
+                                            Task = new AK_TaskSimplify { Expression = "2x + 3x" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+
+                // Validate the exercise spec
+                var specValidateResponse = await sessionService.ValidateExerciseAsync(
+                    new ExerciseValidateRequest { ExerciseSpec = exerciseSpec });
+                Console.WriteLine($"Spec validation: Valid={specValidateResponse.Valid}, Marks={specValidateResponse.Marks}");
+
+                // Create session from spec
+                var specSessionRequest = new CreateSessionRequest
+                {
+                    Exercises = new List<Exercise>
+                    {
+                        new ExerciseBySpec { ExerciseSpec = exerciseSpec }
+                    }
+                };
+                var specSessionResponse = await sessionService.CreateSessionAsync(specSessionRequest);
+                if (specSessionResponse != null && specSessionResponse.Any())
+                {
+                    var firstResult = specSessionResponse.First();
+                    if (firstResult.Success && firstResult.Sessions.Any())
+                    {
+                        Console.WriteLine($"Session from spec created. Session ID: {firstResult.Sessions.First().SessionId}");
+                    }
                 }
             }
             catch (Exception ex)

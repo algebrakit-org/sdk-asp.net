@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using AlgebrakitSDK.Models.AkExercise;
 
 namespace AlgebrakitSDK.Models.Requests;
 
@@ -14,5 +15,5 @@ public class ExerciseValidateRequest
     public string? Version { get; set; }
 
     [JsonPropertyName("exerciseSpec")]
-    public object? ExerciseSpec { get; set; }
+    public AK_Exercise? ExerciseSpec { get; set; }
 }

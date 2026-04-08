@@ -15,4 +15,10 @@ public class ScoringResult
 
     [JsonPropertyName("marksEarned")]
     public double MarksEarned { get; set; }
+
+    /// <summary>
+    /// Penalties aggregated at this scoring level.
+    /// </summary>
+    [JsonPropertyName("penalties")]
+    public Penalties? Penalties { get; set; }
 }
