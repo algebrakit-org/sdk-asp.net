@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using AlgebrakitSDK.Models.AkExercise;
 
 namespace AlgebrakitSDK.Models.Shared;
 
@@ -30,7 +31,7 @@ public class ExerciseById : Exercise
 public class ExerciseBySpec : Exercise
 {
     [JsonPropertyName("exerciseSpec")]
-    public object ExerciseSpec { get; set; } = new();
+    public AK_Exercise ExerciseSpec { get; set; } = new();
 }
 
 /// <summary>
@@ -40,6 +41,9 @@ public class ExerciseBySession : Exercise
 {
     [JsonPropertyName("sessionId")]
     public string SessionId { get; set; } = string.Empty;
+
+    [JsonPropertyName("nr")]
+    public int? Nr { get; set; }
 }
 
 /// <summary>
