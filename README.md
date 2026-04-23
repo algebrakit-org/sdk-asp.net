@@ -1,6 +1,10 @@
 # sdk-asp.net
 
-## How to Run the Demo App
+## How to Run the Demos
+
+### CLI Demo
+
+Demonstrates SDK API calls with text output.
 
 1. Ensure you have the .NET SDK installed on your system. You can verify this by running:
    ```bash
@@ -8,22 +12,33 @@
    ```
    If not installed, download it from [Microsoft's .NET website](https://dotnet.microsoft.com/).
 
-2. Navigate to the root directory of the project:
-   ```bash
-   cd /Users/martijnslob/github/sdk-asp.net
-   ```
-
-3. Build the solution to ensure all dependencies are resolved:
+2. Build the solution:
    ```bash
    dotnet build sdk-asp.net.sln
    ```
 
-4. Run the demo application (ensure you replace `your-api-key-here` in the code with your actual API key):
+3. Update the API key in `DemoApp/Program.cs` and run:
    ```bash
    dotnet run --project DemoApp/DemoApp.csproj
    ```
 
-The demo app will initialize the SDK, create a session for a specific exercise, and log the session ID and scoring results to the console.
+### Web Demo
+
+Renders a working AlgebraKit exercise in the browser.
+
+1. Update the configuration in `PlayExercise/Pages/Index.cshtml.cs`:
+   ```csharp
+   private const string ApiKey     = "your-actual-api-key";
+   private const string ApiUrl     = "https://api.algebrakit.com";
+   private const string WidgetUrl  = "https://widgets.algebrakit.com";
+   ```
+
+2. Run the web demo:
+   ```bash
+   dotnet run --project PlayExercise/PlayExercise.csproj
+   ```
+
+3. Open the URL shown in the terminal (e.g., `http://localhost:5000`) in your browser.
 
 ---
 
