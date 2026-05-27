@@ -1,9 +1,53 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <!-- Code uses file-scoped namespaces (C# 10) and target-typed new (C# 9);
+         netstandard2.0 defaults to C# 7.3, so raise the language version. -->
+    <LangVersion>latest</LangVersion>
+
+    <!-- Assembly identity -->
+    <AssemblyName>AlgebrakitSDK</AssemblyName>
+    <RootNamespace>AlgebrakitSDK</RootNamespace>
+
+    <!-- NuGet package metadata -->
+    <PackageId>Algebrakit.Sdk</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Algebrakit</Authors>
+    <Company>Algebrakit</Company>
+    <Description>Official .NET SDK for the Algebrakit Webservice API — create exercise sessions, retrieve scores, lock/unlock sessions, validate exercises, and fetch session info.</Description>
+    <PackageTags>algebrakit;sdk;math;education;exercises;api-client</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/algebrakit-org/sdk-asp.net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/algebrakit-org/sdk-asp.net</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <Copyright>Copyright © Algebrakit</Copyright>
+
+    <!-- Ship IntelliSense docs (the source has thorough XML doc comments) -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Not every public member has a doc comment; suppress "missing XML comment" noise. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+
+    <!-- Ship a debug symbol package (.snupkg) and a deterministic build -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Packaged README shown on the NuGet.org listing page -->
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <!-- Package icon shown on the NuGet.org listing page -->
+    <None Include="icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <!-- System.Text.Json ships in-box on net8.0 but must be referenced for netstandard2.0 -->
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
 
 </Project>
