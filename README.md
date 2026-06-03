@@ -1,4 +1,4 @@
-# sdk-asp.net
+# sdk-dotnet
 
 ## How to Run the Demos
 
@@ -14,17 +14,23 @@ Demonstrates SDK API calls with text output.
 
 2. Build the solution:
    ```bash
-   dotnet build sdk-asp.net.sln
+   dotnet build sdk-dotnet.sln
    ```
 
-3. Update the API key in `DemoApp/Program.cs` and run:
+3. Set your API key as an environment variable and run:
    ```bash
+   # PowerShell
+   $env:ALGEBRAKIT_API_KEY = "your-api-key"
    dotnet run --project DemoApp/DemoApp.csproj
+   ```
+   ```bash
+   # bash
+   ALGEBRAKIT_API_KEY="your-api-key" dotnet run --project DemoApp/DemoApp.csproj
    ```
 
 ### Web Demo
 
-Renders a working AlgebraKit exercise in the browser.
+Renders a working Algebrakit exercise in the browser.
 
 1. Update the configuration in `PlayExercise/Pages/Index.cshtml.cs`:
    ```csharp
@@ -44,7 +50,7 @@ Renders a working AlgebraKit exercise in the browser.
 
 ## How to Use the SDK
 
-The SDK provides a simple interface for interacting with the AlgebraKit API. Below is an example of how to use the SDK in your own application:
+The SDK provides a simple interface for interacting with the Algebrakit API. Below is an example of how to use the SDK in your own application:
 
 1. Add a reference to the `AlgebrakitSDK` project in your .NET solution.
 

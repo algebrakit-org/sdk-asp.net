@@ -20,7 +20,10 @@ namespace DemoApp
 
             // Initialize the HttpClient and SessionService with API key
             using var httpClient = new HttpClient { BaseAddress = new Uri("https://api.algebrakit.com") };
-            var apiKey = "YWxnZWJyYWtpdC4yMDI1LU1hcnRpam4uNWIxNWU0OWZiMzA1YTI3OWZmNzY4OTc4OTMxZTZlYzg3OGI5Yjg0MDhhODc3OGU2OGUyOTZhYTQ5MDQyNWFhM2M1ZDk2Yjk4ZTk2NzI4ZjA1NGYwNjczMDRjMjMxMzZi"; // Replace with your actual API key
+            var apiKey = Environment.GetEnvironmentVariable("ALGEBRAKIT_API_KEY")
+                ?? throw new InvalidOperationException(
+                    "Set the ALGEBRAKIT_API_KEY environment variable before running this demo. " +
+                    "e.g. (PowerShell)  $env:ALGEBRAKIT_API_KEY = 'your-key';  dotnet run --project DemoApp/DemoApp.csproj");
             var sessionService = new SessionService(httpClient, apiKey);
 
             try
