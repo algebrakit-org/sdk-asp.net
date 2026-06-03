@@ -1,4 +1,4 @@
-# sdk-asp.net
+# sdk-dotnet
 
 ## How to Run the Demos
 
@@ -14,7 +14,7 @@ Demonstrates SDK API calls with text output.
 
 2. Build the solution:
    ```bash
-   dotnet build sdk-asp.net.sln
+   dotnet build sdk-dotnet.sln
    ```
 
 3. Set your API key as an environment variable and run:
